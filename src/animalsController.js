@@ -25,8 +25,6 @@ function show(arrayOfAnimals, animalId) {
 
     return animalToFind.id + " " + animalToFind.name + " " + animalToFind.points + "points";
 
-
-
 }
 
 function create(animals, animalName) {
@@ -66,4 +64,4 @@ function edit(animals, animalId, updatedAnimal) {
 }
 
 
-module.exports = { index, show, create, destroy, edit }
+module.exports = { index, show, create, update, destroy, edit }
