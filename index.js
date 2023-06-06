@@ -67,5 +67,5 @@ run()
 //npm start and node index.js
 
 
-module.exports = { index, show, create, destroy, edit }
+
 
