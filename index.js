@@ -1,12 +1,14 @@
 const { readJSONFile, writeJSONFile } = require("./src/helpers")
 
-const { index, show } = require("./src/animalsController")
+const { create, destroy, edit, index, show } = require("./src/animalsController")
 //console.log("List of arguments for this process.argv", process.argv)
 //console.log("Our proces Object:", process)
 
 const inform = console.log
 
 function run() {
+    let writeToFile = false; //Have we done an Action that will "write" to our JSON File
+    let updatedAnimals = [];
 
     inform("Welcome to our Animals App! 🐢")
 
@@ -17,13 +19,12 @@ function run() {
     const action = process.argv[2];
     const animal = process.argv[3];
 
-    let writeToFile = false; //Have we done an Action that will "write" to our JSON File
 
     switch (action) {
 
         case "index":
             const animalsView = index(animals);
-            inform(animalsView, action);
+            inform(animalsView);
             break;
 
         case "show":
@@ -53,9 +54,18 @@ function run() {
 
         default:
             inform("Hey, we can't do that Fam :(");
+
+
+    }
+    if (writeToFile) {
+        writeJSONFile("./data", "animals.json", updatedAnimals);
     }
 }
 
 run()
 
 //npm start and node index.js
+
+
+module.exports = { index, show, create, destroy, edit }
+
